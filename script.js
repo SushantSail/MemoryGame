@@ -117,7 +117,7 @@ function reset(){
   level = 0;
 }
 
-// Add lisstern over all btn having class btn
+// Add listern over all btn having class btn
 let allBtns = document.querySelectorAll(".btn");
 for (btn of allBtns){
     btn.addEventListener("click",btnPress);
