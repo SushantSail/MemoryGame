@@ -96,6 +96,7 @@ function checkAns(idx){
 
 // Checked which button pressed by user.
 function btnPress(){
+      event.preventDefault();
     let btn=this;
     // console.log(btn);
     let bn =btns[btn.innerText-1]
@@ -119,7 +120,9 @@ function reset(){
 
 // Add listern over all btn having class btn
 let allBtns = document.querySelectorAll(".btn");
-for (btn of allBtns){
-    btn.addEventListener("click",btnPress);
-}
+allBtns.forEach(btn => {
+  btn.addEventListener("click",btnPress);
+  btn.addEventListener("touchstart", btnPress,{ passive : false});
+  btn.addEventListener("touchend",e => e.preventDefault(), { passive : false});
+});
 
