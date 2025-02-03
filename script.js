@@ -119,10 +119,17 @@ function reset(){
 }
 
 // Add listern over all btn having class btn
+let isTouchDevice  ="onTouchstart" in window || navigator.maxTouchPoints > 0;
+
 let allBtns = document.querySelectorAll(".btn");
 allBtns.forEach(btn => {
-  btn.addEventListener("click",btnPress);
-  btn.addEventListener("touchstart", btnPress,{ passive : false});
-  btn.addEventListener("touchend",e => e.preventDefault(), { passive : false});
+  if( isTouchDevice){
+    btn.addEventListener("touchstart", btnPress,{ passive : false});
+    btn.addEventListener("touchend",e => e.preventDefault(), { passive : false});
+  }
+  else{
+    btn.addEventListener("click",btnPress);
+  }
+  
 });
 
